@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DownloadProgressView">
+        <attr name="percentageColor" format="color" />
+        <attr name="totalSizeColor" format="color" />
+        <attr name="downloadedSizeColor" format="color" />
+    </declare-styleable>
+</resources>
