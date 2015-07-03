@@ -104,6 +104,7 @@ public class MainActivity extends ActionBarActivity implements DownloadProgressV
 
     @Override
     public void downloadFailed(int reason) {
+        System.err.println("Failed :" + reason);
         downloadButton.setVisibility(View.VISIBLE);
     }
 
