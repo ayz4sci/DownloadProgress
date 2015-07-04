@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.ayz4sci.downloadprogressview.DownloadProgressView;
+import com.ayz4sci.androidfactory.DownloadProgressView;
 
 import java.io.File;
 

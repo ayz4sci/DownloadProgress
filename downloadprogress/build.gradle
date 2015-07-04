@@ -4,9 +4,9 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'download-progress-view'
 
-    publishedGroupId = 'com.ayz4sci.downloadprogress'
-    libraryName = 'DownloadProgressView'
-    artifact = 'download-progress-view'
+    publishedGroupId = 'com.ayz4sci.androidfactory'
+    libraryName = 'DownloadProgress'
+    artifact = 'downloadprogress'
 
     libraryDescription = 'An android view showing the download progress with just few lines of code'
 

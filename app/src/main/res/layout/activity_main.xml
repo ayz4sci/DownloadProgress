@@ -41,7 +41,7 @@
         android:text="Play"
         android:visibility="gone" />
 
-    <com.ayz4sci.downloadprogressview.DownloadProgressView
+    <com.ayz4sci.androidfactory.DownloadProgressView
         android:id="@+id/downloadProgressView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

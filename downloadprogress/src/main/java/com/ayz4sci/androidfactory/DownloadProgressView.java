@@ -1,4 +1,4 @@
-package com.ayz4sci.downloadprogressview;
+package com.ayz4sci.androidfactory;
 
 import android.app.DownloadManager;
 import android.content.Context;
@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 
 import java.util.ArrayList;
 import java.util.List;
