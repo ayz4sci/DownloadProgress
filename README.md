@@ -1,5 +1,5 @@
 # DownloadProgress
-An android view showing a download progressBar, total size, downloadedSize, percentage downloaded and a cancel button of the android DownloadManager with just few lines of code.
+An android view showing a download progressBar, total size, downloadedSize, percentage downloaded and a cancel button of the android DownloadManager with just few lines of code. Just like Google Play downloading...
 
 # Version
 
