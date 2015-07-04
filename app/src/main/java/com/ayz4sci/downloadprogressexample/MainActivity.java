@@ -48,7 +48,22 @@ public class MainActivity extends ActionBarActivity implements DownloadProgressV
                 request.allowScanningByMediaScanner();
 
                 downloadID = downloadManager.enqueue(request);
-                downloadProgressView.show(downloadID, MainActivity.this);
+                downloadProgressView.show(downloadID, new DownloadProgressView.DownloadStatusListener() {
+                    @Override
+                    public void downloadFailed(int reason) {
+
+                    }
+
+                    @Override
+                    public void downloadSuccessful() {
+
+                    }
+
+                    @Override
+                    public void downloadCancelled() {
+
+                    }
+                });
                 downloadButton.setVisibility(View.GONE);
             }
         });
