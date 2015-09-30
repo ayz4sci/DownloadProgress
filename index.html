@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>DownloadProgressView by ayz4sci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">DownloadProgressView</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/ayz4sci/DownloadProgress" class="btn">View on GitHub</a>
+      <a href="https://github.com/ayz4sci/DownloadProgress/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ayz4sci/DownloadProgress/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="downloadprogress" class="anchor" href="#downloadprogress" aria-hidden="true"><span class="octicon octicon-link"></span></a>DownloadProgress</h1>
+
+<p>An android view showing a download progressBar, total size, downloadedSize, percentage downloaded and a cancel button of the android DownloadManager with just few lines of code. Just like Google Play downloading...</p>
+
+<h1>
+<a id="version" class="anchor" href="#version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version</h1>
+
+<p>1.0.1</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>To use this library in your android project, just simply add the following repositories and dependency into your build.gradle</p>
+
+<div class="highlight highlight-source-shell"><pre>repositories {
+    maven {
+        url <span class="pl-s"><span class="pl-pds">'</span>https://dl.bintray.com/ayz4sci/maven/<span class="pl-pds">'</span></span>
+    }
+}
+
+dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.ayz4sci.androidfactory:downloadprogress:1.0.1<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<p>Then place <code>com.ayz4sci.androidfactory.DownloadProgressView</code> wherever you want the downloadprogressview to show, for example:</p>
+
+<div class="highlight highlight-text-xml"><pre>    &lt;<span class="pl-ent">com</span>.ayz4sci.androidfactory.DownloadProgressView
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/downloadProgressView<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_marginBottom</span>=<span class="pl-s"><span class="pl-pds">"</span>10dp<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_marginTop</span>=<span class="pl-s"><span class="pl-pds">"</span>10dp<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">orientation</span>=<span class="pl-s"><span class="pl-pds">"</span>horizontal<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">visibility</span>=<span class="pl-s"><span class="pl-pds">"</span>gone<span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+<p>You could get a DownloadProgressView instance through <code>findViewById</code> method.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">DownloadProgressView</span> downloadProgressView <span class="pl-k">=</span> (<span class="pl-smi">DownloadProgressView</span>) rootView<span class="pl-k">.</span>findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>downloadProgressView);</pre></div>
+
+<p>To show the downloadprogressview, call <code>show</code> method and pass the downloadID that you got from DownloadManager when you started the download and also set <code>DownloadStatusListener</code> to know when download is successful, failed or cancelled eg.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">DownloadManager</span> downloadManager <span class="pl-k">=</span> (<span class="pl-smi">DownloadManager</span>) getSystemService(<span class="pl-smi">Context</span><span class="pl-c1"><span class="pl-k">.</span>DOWNLOAD_SERVICE</span>);
+<span class="pl-smi">DownloadManager</span><span class="pl-k">.</span><span class="pl-smi">Request</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DownloadManager</span>.<span class="pl-smi">Request</span>(<span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(<span class="pl-s"><span class="pl-pds">"</span>YOUR_DOWNLOAD_URL<span class="pl-pds">"</span></span>));
+request<span class="pl-k">.</span>setTitle(<span class="pl-s"><span class="pl-pds">"</span>TITLE<span class="pl-pds">"</span></span>);
+request<span class="pl-k">.</span>setDescription(<span class="pl-s"><span class="pl-pds">"</span>DESCRIPTION<span class="pl-pds">"</span></span>);
+request<span class="pl-k">.</span>setNotificationVisibility(<span class="pl-smi">DownloadManager</span><span class="pl-k">.</span><span class="pl-smi">Request</span><span class="pl-c1"><span class="pl-k">.</span>VISIBILITY_VISIBLE_NOTIFY_COMPLETED</span>);
+request<span class="pl-k">.</span>setDestinationInExternalFilesDir(getApplicationContext(), <span class="pl-c1">null</span>, <span class="pl-s"><span class="pl-pds">"</span>DOWNLOAD_FILE_NAME.mp4<span class="pl-pds">"</span></span>);
+request<span class="pl-k">.</span>allowScanningByMediaScanner();
+downloadID <span class="pl-k">=</span> downloadManager<span class="pl-k">.</span>enqueue(request);
+
+downloadProgressView<span class="pl-k">.</span>show(downloadID, <span class="pl-k">new</span> <span class="pl-smi">DownloadProgressView</span>.<span class="pl-smi">DownloadStatusListener</span>() {
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">downloadFailed</span>(<span class="pl-k">int</span> <span class="pl-v">reason</span>) {
+     <span class="pl-c">//Action to perform when download fails, reason as returned by DownloadManager.COLUMN_REASON</span>
+  }
+
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">downloadSuccessful</span>() {
+    <span class="pl-c">//Action to perform on success</span>
+  }
+
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">downloadCancelled</span>() {
+    <span class="pl-c">//Action to perform when user press the cancel button</span>
+  }
+});</pre></div>
+
+<p>That's all. DownloadProgressView will handle the rest!</p>
+
+<h1>
+<a id="change-logs" class="anchor" href="#change-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change Logs</h1>
+
+<h3>
+<a id="v101" class="anchor" href="#v101" aria-hidden="true"><span class="octicon octicon-link"></span></a>v1.0.1</h3>
+
+<p>Initial version</p>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>Apache 2.0</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ayz4sci/DownloadProgress">DownloadProgressView</a> is maintained by <a href="https://github.com/ayz4sci">ayz4sci</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
