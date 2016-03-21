@@ -30,8 +30,7 @@ Then place `com.ayz4sci.androidfactory.DownloadProgressView` wherever you want t
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     android:layout_marginTop="10dp"
-    android:orientation="horizontal"
-    android:visibility="gone" />
+    android:orientation="horizontal" />
 ```
 
 You could get a DownloadProgressView instance through `findViewById` method.
