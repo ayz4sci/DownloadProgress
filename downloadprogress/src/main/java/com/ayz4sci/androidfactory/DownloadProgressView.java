@@ -88,6 +88,15 @@ public class DownloadProgressView extends LinearLayout {
     }
 
     /**
+     * This method returns the color of the downloadedSize TextView.
+     *
+     * @return the color of the downloadedSize TextView.
+     */
+    public int getDownloadedSizeColor() {
+        return downloadedSizeColor;
+    }
+
+    /**
      * This method sets the color of the downloadedSize TextView.
      *
      * @param downloadedSizeColor the color of the downloadedSize TextView.
@@ -97,6 +106,15 @@ public class DownloadProgressView extends LinearLayout {
         downloadedSizeView.setTextColor(ColorStateList.valueOf(percentageColor));
         invalidate();
         requestLayout();
+    }
+
+    /**
+     * This method returns the color of the totalSize TextView.
+     *
+     * @return the color of the totalSize TextView.
+     */
+    public int getTotalSizeColor() {
+        return totalSizeColor;
     }
 
     /**
@@ -112,6 +130,15 @@ public class DownloadProgressView extends LinearLayout {
     }
 
     /**
+     * This method returns the color of the percentage TextView.
+     *
+     * @return the color of the percentage TextView.
+     */
+    public int getPercentageColor() {
+        return percentageColor;
+    }
+
+    /**
      * This method sets the color of the percentage TextView.
      *
      * @param percentageColor the color of the percentage TextView.
@@ -121,33 +148,6 @@ public class DownloadProgressView extends LinearLayout {
         percentageView.setTextColor(ColorStateList.valueOf(percentageColor));
         invalidate();
         requestLayout();
-    }
-
-    /**
-     * This method returns the color of the downloadedSize TextView.
-     *
-     * @return the color of the downloadedSize TextView.
-     */
-    public int getDownloadedSizeColor() {
-        return downloadedSizeColor;
-    }
-
-    /**
-     * This method returns the color of the totalSize TextView.
-     *
-     * @return the color of the totalSize TextView.
-     */
-    public int getTotalSizeColor() {
-        return totalSizeColor;
-    }
-
-    /**
-     * This method returns the color of the percentage TextView.
-     *
-     * @return the color of the percentage TextView.
-     */
-    public int getPercentageColor() {
-        return percentageColor;
     }
 
     /**
@@ -182,7 +182,12 @@ public class DownloadProgressView extends LinearLayout {
                         final int reason = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON));//Get download status
                         final long bytes_downloaded = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
                         final long bytes_total = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
-                        final long download_percentage = (bytes_downloaded * 100l) / bytes_total;
+                        final long download_percentage;
+                        if (bytes_total > 0) {
+                            download_percentage = (bytes_downloaded * 100l) / bytes_total;
+                        } else {
+                            download_percentage = 0;
+                        }
 
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override

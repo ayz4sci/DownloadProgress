@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.ayz4sci.androidfactory:downloadprogress:1.0.1'
+    compile 'com.ayz4sci.androidfactory:downloadprogress:1.0.2'
 }
 ```
 
